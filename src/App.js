@@ -6,7 +6,14 @@ class App extends Component {
     hValue: 0,
     sValue: 0,
     lValue: 0,
-    aValue: 0,
+    aValue: 100,
+  }
+
+  randomizeColor = () => {
+    this.state.hValue = Math.floor(Math.random() * Math.floor(360))
+    this.state.sValue = Math.floor(Math.random() * Math.floor(100))
+    this.state.lValue = Math.floor(Math.random() * Math.floor(100))
+    // this.state.aValue = Math.floor(Math.random() * Math.floor(100))
   }
 
   trackHValue = e => {
@@ -36,6 +43,7 @@ class App extends Component {
   }
 
   render() {
+    this.randomizeColor()
     return (
       <main>
         <section class="color">
@@ -66,7 +74,7 @@ class App extends Component {
               type="range"
               min="1"
               max="360"
-              defaultValue="180"
+              defaultValue={this.state.hValue}
             />
           </div>
           <div class="slidecontainer">
@@ -76,7 +84,7 @@ class App extends Component {
               type="range"
               min="1"
               max="100"
-              defaultValue="50"
+              defaultValue={this.state.sValue}
             />
           </div>
           <div class="slidecontainer">
@@ -86,7 +94,7 @@ class App extends Component {
               type="range"
               min="1"
               max="100"
-              defaultValue="50"
+              defaultValue={this.state.lValue}
             />
           </div>
           <div class="slidecontainer">
@@ -96,7 +104,7 @@ class App extends Component {
               type="range"
               min="1"
               max="100"
-              defaultValue="100"
+              defaultValue={this.state.aValue}
             />
           </div>
         </section>
