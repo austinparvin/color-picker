@@ -3,9 +3,9 @@ import HelloWorld from './components/HelloWorld'
 
 class App extends Component {
   state = {
-    hValue: 0,
-    sValue: 0,
-    lValue: 0,
+    hValue: Math.floor(Math.random() * Math.floor(360)),
+    sValue: Math.floor(Math.random() * Math.floor(100)),
+    lValue: Math.floor(Math.random() * Math.floor(100)),
     aValue: 100,
   }
 
@@ -13,7 +13,16 @@ class App extends Component {
     this.state.hValue = Math.floor(Math.random() * Math.floor(360))
     this.state.sValue = Math.floor(Math.random() * Math.floor(100))
     this.state.lValue = Math.floor(Math.random() * Math.floor(100))
-    // this.state.aValue = Math.floor(Math.random() * Math.floor(100))
+    this.state.color =
+      'hsl(' +
+      this.state.hValue +
+      ', ' +
+      this.state.sValue +
+      '%, ' +
+      this.state.lValue +
+      '%, ' +
+      this.state.aValue / 100 +
+      ')'
   }
 
   trackHValue = e => {
@@ -43,16 +52,25 @@ class App extends Component {
   }
 
   render() {
-    this.randomizeColor()
     return (
       <main>
         <section class="color">
-          <h1 class="color-header">Color</h1>
+          <h1 class="color-header">
+            {'hsla(' +
+              this.state.hValue +
+              ', ' +
+              this.state.sValue +
+              '%, ' +
+              this.state.lValue +
+              '%, ' +
+              this.state.aValue / 100 +
+              ')'}
+          </h1>
           <div className="color-background">
             <div
               style={{
                 backgroundColor:
-                  'hsl(' +
+                  'hsla(' +
                   this.state.hValue +
                   ', ' +
                   this.state.sValue +
@@ -65,6 +83,7 @@ class App extends Component {
               class="color-display"
             ></div>
           </div>
+          <p className="color-text"></p>
         </section>
         <section>
           <div class="slidecontainer">
