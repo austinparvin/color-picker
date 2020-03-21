@@ -2,28 +2,29 @@ import React, { Component } from 'react'
 import HelloWorld from './components/HelloWorld'
 
 class App extends Component {
+  // sets random hsl() color values
   state = {
     hValue: Math.floor(Math.random() * Math.floor(360)),
     sValue: Math.floor(Math.random() * Math.floor(100)),
     lValue: Math.floor(Math.random() * Math.floor(100)),
-    aValue: 100,
+    aValue: Math.floor(Math.random() * Math.floor(100)),
   }
 
-  randomizeColor = () => {
-    this.state.hValue = Math.floor(Math.random() * Math.floor(360))
-    this.state.sValue = Math.floor(Math.random() * Math.floor(100))
-    this.state.lValue = Math.floor(Math.random() * Math.floor(100))
-    this.state.color =
-      'hsl(' +
-      this.state.hValue +
-      ', ' +
-      this.state.sValue +
-      '%, ' +
-      this.state.lValue +
-      '%, ' +
-      this.state.aValue / 100 +
-      ')'
+  // sets random hsl() color values when button is clicked
+  randomizeColor = e => {
+    this.setState({
+      hValue: Math.floor(Math.random() * Math.floor(360)),
+      sValue: Math.floor(Math.random() * Math.floor(100)),
+      lValue: Math.floor(Math.random() * Math.floor(100)),
+      aValue: Math.floor(Math.random() * Math.floor(100)),
+    })
   }
+
+  // setTextColor = () => {
+  //   this.state.lValue > 50
+  //     ? this.setState({ textColor: 'black' })
+  //     : this.setState({ textColor: 'white' })
+  // }
 
   trackHValue = e => {
     console.log(e.target.value)
@@ -56,7 +57,7 @@ class App extends Component {
       <main>
         <section class="color">
           <h1 class="color-header">
-            {'hsla(' +
+            {(this.state.aValue < 100 ? 'hsla(' : 'hsl(') +
               this.state.hValue +
               ', ' +
               this.state.sValue +
@@ -93,7 +94,7 @@ class App extends Component {
               type="range"
               min="1"
               max="360"
-              defaultValue={this.state.hValue}
+              value={this.state.hValue}
             />
           </div>
           <div class="slidecontainer">
@@ -103,7 +104,7 @@ class App extends Component {
               type="range"
               min="1"
               max="100"
-              defaultValue={this.state.sValue}
+              value={this.state.sValue}
             />
           </div>
           <div class="slidecontainer">
@@ -113,7 +114,7 @@ class App extends Component {
               type="range"
               min="1"
               max="100"
-              defaultValue={this.state.lValue}
+              value={this.state.lValue}
             />
           </div>
           <div class="slidecontainer">
@@ -123,8 +124,28 @@ class App extends Component {
               type="range"
               min="1"
               max="100"
-              defaultValue={this.state.aValue}
+              value={this.state.aValue}
             />
+          </div>
+          <div className="randomize-button">
+            <button
+              style={{
+                backgroundColor:
+                  'hsla(' +
+                  this.state.hValue +
+                  ', ' +
+                  this.state.sValue +
+                  '%, ' +
+                  this.state.lValue +
+                  '%, ' +
+                  this.state.aValue / 100 +
+                  ')',
+              }}
+              onClick={this.randomizeColor}
+              className="button2"
+            >
+              Randomize
+            </button>
           </div>
         </section>
       </main>
