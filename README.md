@@ -8,11 +8,8 @@
 
 # Includes: 
 
-- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
-- [CSS](https://www.w3schools.com/css/)
-- [FLEXBOX](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)
 - [REACT](https://reactjs.org/docs/getting-started.html)
-- [NETLIFY](https://docs.netlify.com/?_ga=2.56383019.1272475466.1587169866-1421079835.1583768648)
+- [REACT PROPS](https://reactjs.org/docs/components-and-props.html)
 
 # Requirements 
 
